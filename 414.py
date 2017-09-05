@@ -19,7 +19,6 @@ class Solution(object):
                 elif num > v[2]: v = [v[0], v[1], num]
         return max(nums) if float('-inf') in v else v[2]    #if else in one line
 
-
 class Solution(object):
     def thirdMax(self, nums):
         
