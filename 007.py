@@ -5,15 +5,20 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        if x < 0:             #·ÖÇé¿öÌÖÂÛ
-            ch = str(-x)      #¸ºÊı±ä³ÉÕıÊıÔÚstr
-            rch = ch[::-1]     #ÇĞÆ¬Éñ¼£
+        if x < 0:             #åˆ†æƒ…å†µè®¨è®º
+            ch = str(-x)      #è´Ÿæ•°å˜æˆæ­£æ•°åœ¨str
+            rch = ch[::-1]     #åˆ‡ç‰‡ç¥è¿¹
             n = 0 - int(rch)
         else:
             ch = str(x)
             rch = ch[::-1]
             n = int(rch)
-        if n < -2**31 or n > 2**31-1: #32bit sighed integerµÄÉÏÏÂÏŞ
+        if n < -2**31 or n > 2**31-1: #32bit sighed integerçš„ä¸Šä¸‹é™
             return 0
         else:
             return n
+
+def reverse(self, x):
+    s = cmp(x, 0)
+    r = int(`s*x`[::-1])      #convert to abs
+    return s*r * (r < 2**31)  #èŒƒå›´å†…æ˜¯1ï¼Œå¦åˆ™æ˜¯0
