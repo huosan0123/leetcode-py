@@ -16,3 +16,7 @@ class Solution(object):
                 node.next = None
             else:
                 node = node.next
+
+# My solution is a bit silly.
+# node.val = node.next.val
+# node.next = node.next.next
