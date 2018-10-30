@@ -13,3 +13,12 @@ class Solution(object):
         for item in ans:          #dict's operation
             if ans[item] == 1:
                 return item
+            
+    def singleNumber2(self, nums):
+        res = 0
+        for num in nums:
+            res ^= num
+        return res
+    
+    def singleNumber(self, nums):
+        return reduce(operator.xor, nums)
