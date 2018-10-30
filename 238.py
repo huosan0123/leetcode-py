@@ -16,3 +16,19 @@ class Solution:
             p = p * nums[i]
         return output
 
+
+def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        n = len(nums)
+        ans = [1] * n
+        back = 1
+        for i in range(1, n):
+            ans[i] = ans[i-1] * nums[i-1]
+        for i in range(n-2, -1, -1):
+            back *= nums[i+1]
+            ans[i] *= back
+        
+        return ans
