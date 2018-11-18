@@ -1,0 +1,22 @@
+class Solution(object):
+    def letterCasePermutation(self, S):
+        """
+        :type S: str
+        :rtype: List[str]
+        """
+        ans = []
+        
+        def dfs(i, path, ans):
+            # Note: 满足条件时，最后要return，否则错误。
+            if i == len(S) and len(path) == len(S):
+                ans.append(path)
+                return
+            if S[i].isalpha():
+                dfs(i+1, path + S[i].lower(), ans)
+                dfs(i+1, path + S[i].upper(), ans)
+            else:
+                dfs(i+1, path + S[i], ans)
+        
+        dfs(0, "", ans)
+        return ans
+        
