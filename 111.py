@@ -28,3 +28,12 @@ class Solution(object):
             
         preorder(root, 0)
         return depth[0]
+
+    # 这种解法更符合tree的思想，上面遍历太傻了
+    def minDepth(self, root):
+        if not root:
+            return 0
+        if not root.left or not root.right:    # 左右节点有一个有值，那该节点的dep等于大的
+            return max(self.minDepth(root.left), self.minDepth(root.right)) + 1
+        else:        # 左右都非空，取小的
+            return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
