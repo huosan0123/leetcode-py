@@ -37,4 +37,14 @@ class Solution(object):
                 ans.append(tmp[::])
                 que2 = []
         return ans[::-1]
-                
+   
+# super clean!!!!
+   def levelOrderBottom(self, root):
+    if not root:
+        return []
+    level = [root]
+    stack = []
+    while level:
+        stack.append([each.val for each in level])
+        level = [node for each in level for node in (each.left, each.right) if node]
+    return stack[::-1]
