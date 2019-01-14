@@ -23,3 +23,18 @@ class Solution:
             else:
                 root = head.next
                 tail = head
+    
+    # 另外一种方案，利用了满二叉树的性质
+    def connect(self, root):
+        if not root:    return
+        cur = root
+        nex = root.left
+        while cur.left:
+            print(cur.val)
+            cur.left.next = cur.right
+            if cur.next:
+                cur.right.next = cur.next.left
+                cur = cur.next
+            else:
+                cur = nex
+                nex = cur.left
