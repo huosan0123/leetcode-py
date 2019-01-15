@@ -34,3 +34,22 @@ class Solution(object):
                 break
             i += 1
         return path1[i-1]
+
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        if not root or root == p or root == q:
+            return root
+        
+        l = self.lowestCommonAncestor(root.left, p, q)
+        r = self.lowestCommonAncestor(root.right, p, q)
+        # if l and r are both not null meaning they are on both sides of the tree we return root as their common ancestor, 
+        # if they are not both valid we return the one that is valid (not null)
+        if l and r:   # 如果l r 返回的都有值，说明二者分别在root的左右subtree
+            return root
+        else:         # 都在某一个subtree上，返回该部分返回的值
+            return l if l else r
