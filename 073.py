@@ -3,6 +3,7 @@ class Solution(object):
         """
         :type matrix: List[List[int]]
         :rtype: void Do not return anything, modify matrix in-place instead.
+        m+n的space很好解决
         """
         m, n = len(matrix), len(matrix[0])
         is_col = False
