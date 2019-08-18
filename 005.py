@@ -23,3 +23,27 @@ class Solution(object):
                     high = i+j
                     low = i-j+1
         return s[low:high+1]
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        if len(s) <= 1:
+            return s
+        n = len(s)
+        substr = ""
+        for i in range(n):
+            mid = i
+            j = 1
+            while mid-j >= 0 and mid+j < n and s[mid-j] == s[mid+j]:
+                j += 1
+            if (j-1) * 2 + 1 > len(substr):
+                substr = s[(mid-j+1):(mid+j)]
+            if mid + 1 < n and s[mid] == s[mid+1]:
+                j = 1
+                while mid-j >= 0 and mid+1+j < n and s[mid-j] == s[mid+1+j]:
+                    j += 1
+                if (j-1) * 2 + 2 > len(substr):
+                    substr = s[(mid-j+1):(mid+1+j)]
+        return substr
